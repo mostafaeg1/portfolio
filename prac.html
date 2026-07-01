@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>السنة التطبيقية | مصطفى اغبارية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rakkas&family=Tajawal:wght@300;400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #1a2420;
+        --board: #2e4034;
+        --board-dark: #233229;
+        --chalk: #f5f1e6;
+        --paper: #faf6ee;
+        --amber: #d98e4a;
+        --amber-soft: #f0c48a;
+        --sage: #8b9d83;
+        --line-red: #b85c4a;
+        --shadow: 0 20px 50px rgba(26, 36, 32, 0.18);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: 'Tajawal', sans-serif;
+        background: var(--paper);
+        color: var(--ink);
+        line-height: 1.8;
+        overflow-x: hidden;
+      }
+      h1,
+      h2,
+      h3,
+      .display {
+        font-family: 'Rakkas', serif;
+        font-weight: 400;
+      }
+      .chalk-texture {
+        background-image: radial-gradient(
+            rgba(245, 241, 230, 0.05) 1px,
+            transparent 1px
+          ),
+          radial-gradient(rgba(245, 241, 230, 0.04) 1px, transparent 1px);
+        background-size: 22px 22px, 34px 34px;
+        background-position: 0 0, 11px 17px;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* ===== NAV ===== */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--board);
+        border-bottom: 3px solid var(--amber);
+      }
+      .nav-wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 28px;
+      }
+      .logo {
+        color: var(--chalk);
+        font-family: 'Rakkas', serif;
+        font-size: 1.5rem;
+        letter-spacing: 0.5px;
+      }
+      nav ul {
+        display: flex;
+        gap: 28px;
+        list-style: none;
+      }
+      nav a {
+        color: var(--chalk);
+        font-size: 0.98rem;
+        font-weight: 500;
+        position: relative;
+        padding: 6px 2px;
+        transition: color 0.25s ease;
+      }
+      nav a::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: -4px;
+        width: 0;
+        height: 2px;
+        background: var(--amber);
+        transition: width 0.3s ease;
+      }
+      nav a:hover {
+        color: var(--amber-soft);
+      }
+      nav a:hover::after {
+        width: 100%;
+      }
+      nav a.active {
+        color: var(--amber-soft);
+      }
+      nav a.active::after {
+        width: 100%;
+      }
+      .nav-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--chalk);
+        font-size: 1.6rem;
+        cursor: pointer;
+      }
+      @media (max-width: 820px) {
+        nav ul {
+          position: absolute;
+          inset-inline-end: 0;
+          top: 100%;
+          flex-direction: column;
+          background: var(--board);
+          width: 220px;
+          padding: 14px 20px;
+          gap: 14px;
+          transform: translateY(-8px);
+          opacity: 0;
+          pointer-events: none;
+          transition: 0.25s ease;
+          border-bottom: 3px solid var(--amber);
+        }
+        nav ul.open {
+          transform: translateY(0);
+          opacity: 1;
+          pointer-events: auto;
+        }
+        .nav-toggle {
+          display: block;
+        }
+      }
+
+      /* ===== PAGE HERO ===== */
+      .page-hero {
+        background: var(--board);
+        color: var(--chalk);
+        position: relative;
+        padding: 70px 28px 100px;
+        text-align: center;
+        overflow: hidden;
+      }
+      .page-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 60px;
+        width: 2px;
+        background: var(--line-red);
+        opacity: 0.35;
+      }
+      .eyebrow {
+        display: inline-block;
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+        color: var(--amber-soft);
+        border: 1px solid var(--amber-soft);
+        padding: 5px 16px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+      }
+      .page-hero h1 {
+        font-size: clamp(2.2rem, 5vw, 3.4rem);
+        margin-bottom: 16px;
+      }
+      .page-hero p {
+        max-width: 680px;
+        margin: 0 auto;
+        font-size: 1.05rem;
+        color: #dce3d9;
+      }
+
+      section {
+        padding: 80px 28px;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .sec-head {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+      .eyebrow-dark {
+        color: var(--amber);
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+        font-weight: 700;
+      }
+      .sec-head h2 {
+        font-size: clamp(1.8rem, 4vw, 2.4rem);
+        margin-top: 10px;
+        color: var(--board);
+      }
+      .underline {
+        width: 70px;
+        height: 4px;
+        background: var(--amber);
+        border-radius: 2px;
+        margin: 16px auto 0;
+      }
+
+      /* ===== INTRO ===== */
+      .intro-card {
+        background: var(--chalk);
+        border-radius: 16px;
+        padding: 40px 36px;
+        box-shadow: var(--shadow);
+        border-top: 5px solid var(--amber);
+        max-width: 820px;
+        margin: 0 auto;
+      }
+      .intro-card p {
+        color: #3d453f;
+        font-size: 1.05rem;
+      }
+
+      /* ===== JOURNEY / REFLECTIONS ===== */
+      .journey {
+        position: relative;
+        max-width: 820px;
+        margin: 0 auto;
+      }
+      .journey::before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        bottom: 8px;
+        right: 23px;
+        width: 2px;
+        background: linear-gradient(
+          to bottom,
+          var(--amber),
+          var(--sage),
+          var(--line-red),
+          var(--board)
+        );
+      }
+      @media (max-width: 640px) {
+        .journey::before {
+          right: 15px;
+        }
+      }
+      .stage {
+        position: relative;
+        padding-inline-end: 64px;
+        margin-bottom: 38px;
+      }
+      @media (max-width: 640px) {
+        .stage {
+          padding-inline-end: 44px;
+        }
+      }
+      .stage:last-child {
+        margin-bottom: 0;
+      }
+      .stage-num {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--board);
+        color: var(--amber-soft);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        box-shadow: var(--shadow);
+        z-index: 2;
+      }
+      @media (max-width: 640px) {
+        .stage-num {
+          width: 32px;
+          height: 32px;
+          font-size: 1.1rem;
+        }
+      }
+      .stage-card {
+        background: var(--paper);
+        border: 1px solid #e3ddcd;
+        border-radius: 12px;
+        padding: 26px 28px;
+      }
+      .stage-card h3 {
+        color: var(--board);
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+      }
+      .stage-card p {
+        color: #3d453f;
+        font-size: 0.97rem;
+      }
+      .stage:nth-child(1) .stage-num {
+        background: var(--amber);
+        color: var(--ink);
+      }
+      .stage:nth-child(2) .stage-num {
+        background: var(--sage);
+        color: var(--ink);
+      }
+      .stage:nth-child(3) .stage-num {
+        background: var(--line-red);
+        color: var(--chalk);
+      }
+      .stage:nth-child(4) .stage-num {
+        background: var(--board);
+      }
+
+      /* ===== CONTACT STRIP ===== */
+      .contact-strip {
+        background: var(--board);
+        color: var(--chalk);
+        text-align: center;
+      }
+      .contact-strip .sec-head h2 {
+        color: var(--chalk);
+      }
+      .contact-row {
+        display: flex;
+        justify-content: center;
+        gap: 48px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+      .contact-row .item {
+        text-align: center;
+      }
+      .contact-row .item .ic {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: rgba(245, 241, 230, 0.08);
+        color: var(--amber-soft);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        margin: 0 auto 10px;
+      }
+      .contact-row .item small {
+        display: block;
+        color: #9aa69a;
+        font-size: 0.8rem;
+        margin-bottom: 4px;
+      }
+      .contact-row .item strong {
+        font-size: 1.02rem;
+      }
+      .social-strip {
+        margin-top: 34px;
+        display: flex;
+        justify-content: center;
+      }
+      .social-strip a {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgba(245, 241, 230, 0.08);
+        color: var(--chalk);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.2s ease;
+      }
+      .social-strip a:hover {
+        background: var(--amber);
+        color: var(--ink);
+      }
+
+      footer {
+        background: var(--board-dark);
+        color: #9aa69a;
+        text-align: center;
+        padding: 26px;
+        font-size: 0.85rem;
+      }
+      footer span {
+        color: var(--amber-soft);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="nav-wrap">
+        <div class="logo">مصطفى اغبارية</div>
+        <button class="nav-toggle" id="navToggle" aria-label="القائمة">
+          ☰
+        </button>
+        <nav>
+          <ul id="navList">
+            <li><a href="seraj-agbarya.html">الرئيسية</a></li>
+            <li><a href="observations.html">المشاهدات الصفية</a></li>
+            <li><a href="seraj-agbarya.html#lessons">الدروس</a></li>
+            <!-- <li><a href="seraj-agbarya.html#portfolio">Portfolio</a></li> -->
+            <!-- <li><a href="practicum.html" class="active">السنة التطبيقية</a></li> -->
+            <li><a href="seraj-agbarya.html#contact">تواصل</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="page-hero chalk-texture">
+      <div class="eyebrow">خلاصة العام</div>
+      <h1>السنة التطبيقية</h1>
+      <p>
+        خلال هذا العام، اكتشفت قدراتي الحقيقية في الوقوف أمام الطلاب وإدارة
+        الموقف التعليمي بثقة.
+      </p>
+    </section>
+
+    <section id="summary">
+      <div class="container">
+        <div class="sec-head">
+          <div class="eyebrow-dark">إذاً</div>
+          <h2>خلاصة التجربة</h2>
+          <div class="underline"></div>
+        </div>
+        <div class="intro-card">
+          <p>
+            تعلّمت أن الاجتهاد والتحضير المسبق يمنحانني شعورًا بالسيطرة
+            والارتياح داخل الصف، كما أدركت أنني أمتلك القدرة على التكيف مع
+            التحديات، والتطور من خلال التعلّم المستمر وتقبّل الملاحظات المهنية.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="board-section chalk-texture"
+      style="background: var(--board)"
+    >
+      <div class="container">
+        <div class="sec-head">
+          <div class="eyebrow-dark" style="color: var(--amber-soft)">
+            رحلة العام
+          </div>
+          <h2 style="color: var(--chalk)">التحديات، النجاحات، والتأثير</h2>
+          <div class="underline"></div>
+        </div>
+        <div class="journey">
+          <div class="stage">
+            <div class="stage-num">١</div>
+            <div class="stage-card">
+              <h3>التحديات</h3>
+              <p>
+                من أبرز التحديات التي واجهتني في هذه السنة كانت صعوبة التعامل مع
+                الفروقات الفردية بين الطلاب داخل الصف، بالإضافة إلى إدارة الوقت
+                بشكل فعّال أثناء الحصة، خاصة عند تقديم مواضيع معقدة في علم
+                الحاسوب تتطلب تبسيطًا وتوضيحًا إضافيًا. كما كان من التحديات
+                الأولى التغلب على التوتر الطبيعي الذي يصاحب الوقوف أمام الصف في
+                المراحل الأولى من التدريب.
+              </p>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-num">٢</div>
+            <div class="stage-card">
+              <h3>أبرز النجاحات</h3>
+              <p>
+                من أبرز النجاحات التي حققتها كانت قدرتي على إيصال مفاهيم برمجية
+                معقدة، مثل موضوع المصفوفات وسلسلة فيبوناتشي، بطريقة مبسطة
+                ومفهومة لمعظم الطلاب، وهو ما انعكس في قدرتهم على حل التمارين
+                بأنفسهم. كذلك، تلقيت ملاحظات إيجابية من المعلمين والمدرسة حول
+                التزامي وتقدمي الملحوظ في مهارات التدريس وإدارة الصف.
+              </p>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-num">٣</div>
+            <div class="stage-card">
+              <h3>تأثير السنة</h3>
+              <p>
+                أثّرت عليّ هذه السنة بشكل كبير على المستوى الشخصي والمهني، حيث
+                منحتني ثقة أكبر في قدراتي كمعلم، وساعدتني على تطوير مهارات
+                التواصل والصبر، كما عززت قناعتي بأن التعليم ليس مجرد نقل معرفة،
+                بل بناء علاقة تربوية تقوم على الاحترام، التحفيز، والدعم النفسي
+                للطلاب.
+              </p>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-num">٤</div>
+            <div class="stage-card">
+              <h3>التطلعات</h3>
+              <p>
+                أتطلع في المرحلة القادمة إلى الاستمرار في تطوير مهاراتي التربوية
+                والعملية، خاصة في جانب إدارة الصف والتعامل مع الفروقات الفردية
+                بمرونة أكبر. كما أطمح إلى توسيع معرفتي بأساليب التعليم الحديثة
+                وتكنولوجيا التعليم، والعمل على صقل شخصيتي المهنية كمعلّم قادر
+                على التأثير الإيجابي في بيئة التعليم والمجتمع.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-strip">
+      <div class="container">
+        <div class="sec-head">
+          <div class="eyebrow-dark" style="color: var(--amber-soft)">تواصل</div>
+          <h2>لنبقَ على تواصل</h2>
+          <div class="underline"></div>
+        </div>
+        <div class="contact-row">
+          <div class="item">
+            <div class="ic">📞</div>
+            <small>Phone</small>
+            <strong>0505822432</strong>
+          </div>
+          <div class="item">
+            <div class="ic">✉️</div>
+            <small>Email</small>
+            <strong>mostafaigbarea@gmail.com</strong>
+          </div>
+        </div>
+        <div class="social-strip">
+          <a
+            href="https://www.linkedin.com/in/mostafa-egbaria-0746b2400/"
+            target="_blank"
+            rel="noopener"
+            aria-label="LinkedIn"
+            >in</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      جميع الحقوق محفوظة &copy; <span id="year"></span> —
+      <span>مصطفى اغبارية</span>
+    </footer>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+      const toggle = document.getElementById('navToggle');
+      const list = document.getElementById('navList');
+      toggle.addEventListener('click', () => list.classList.toggle('open'));
+    </script>
+  </body>
+</html>
